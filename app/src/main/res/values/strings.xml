@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Parstagram</string>
-    <string name="description">Description</string>
+    <string name="description">Description...</string>
     <string name="take_picture">Take Picture</string>
 </resources>
