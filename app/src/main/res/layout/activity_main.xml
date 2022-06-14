@@ -34,7 +34,7 @@
         android:id="@+id/btnTakePicture"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:backgroundTint="#fbad50	"
+        android:backgroundTint="@color/insta_red_hue"
         android:text="@string/take_picture"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -58,4 +58,17 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
+
+    <ImageButton
+        android:id="@+id/ibhome"
+        android:layout_width="42dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/instagram_new_post_filled_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
