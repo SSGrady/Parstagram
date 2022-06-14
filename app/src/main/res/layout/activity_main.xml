@@ -60,15 +60,25 @@
         app:layout_constraintTop_toBottomOf="@+id/ivPostImage" />
 
     <ImageButton
-        android:id="@+id/ibhome"
+        android:id="@+id/ibPhoto"
         android:layout_width="42dp"
         android:layout_height="41dp"
+        android:layout_marginStart="100dp"
         android:layout_marginBottom="16dp"
         android:background="@drawable/instagram_new_post_filled_24"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ibHome"
         tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/ibHome"
+        android:layout_width="36dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/instagram_home_outline_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

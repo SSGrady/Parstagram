@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -40,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     public ImageView ivPostImage;
     private File photoFile;
     public String photoFileName = "photo.jpg";
+    public ImageButton ibHome;
+    public ImageButton ibPhoto;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +52,16 @@ public class MainActivity extends AppCompatActivity {
         etDescription = findViewById(R.id.etDescription);
         ivPostImage = findViewById(R.id.ivPostImage);
         btnTakePicture = findViewById(R.id.btnTakePicture);
+        ibHome = findViewById(R.id.ibHome);
+        ibPhoto = findViewById(R.id.ibPhoto);
         btnSubmit = findViewById(R.id.btnSubmit);
+
+        ibPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // should not do anything since you are already in MainActivity//Take a photo Activity.
+            }
+        });
         btnTakePicture.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,6 +81,15 @@ public class MainActivity extends AppCompatActivity {
                 ParseUser.logOut();
                 currentUser = ParseUser.getCurrentUser(); // this will now be null
                 goLoginActivity();
+            }
+        });
+
+        ibHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FeedActivity.class);
+                startActivity(i);
+                finish();
             }
         });
 
