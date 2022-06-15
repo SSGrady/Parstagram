@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.parse.FindCallback;
@@ -55,6 +56,7 @@ public class MainActivity extends AppCompatActivity {
         ibHome = findViewById(R.id.ibHome);
         ibPhoto = findViewById(R.id.ibPhoto);
         btnSubmit = findViewById(R.id.btnSubmit);
+
 
         ibPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
