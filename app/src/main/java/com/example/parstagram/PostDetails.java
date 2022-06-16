@@ -1,11 +1,13 @@
 package com.example.parstagram;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.util.Log;
@@ -18,6 +20,7 @@ import com.bumptech.glide.Glide;
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import org.parceler.Parcels;
 
@@ -59,6 +62,7 @@ public class PostDetails extends AppCompatActivity {
         });
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +77,26 @@ public class PostDetails extends AppCompatActivity {
 
         post = getIntent().getParcelableExtra("post");
 
+        ibHeart.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
+            @Override
+            public void onClick(View v) {
+                List<ParseUser> likedBy = post.getLikedBy();
+                if (post.isLikedByCurrentUser()) {
+                    // unlike
+                    post.unlike();
+                    ibHeart.setBackgroundResource(R.drawable.ufi_heart);
+                } else {
+                    ibHeart.setBackgroundResource(R.drawable.ufi_heart_active);
+                    // like
+                    post.like();
+                }
+               // post.setLikedBy(likedBy);
+               // post.saveInBackground();
+                tvLikes.setText(post.getLikesCount());
+            }
+        });
+
         ibComment.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,6 +110,14 @@ public class PostDetails extends AppCompatActivity {
         adapter = new CommentsAdapter();
         rvComments.setLayoutManager(new LinearLayoutManager(this));
         rvComments.setAdapter(adapter);
+
+        if (post.isLikedByCurrentUser()) {
+            ibHeart.setBackgroundResource(R.drawable.ufi_heart_active);
+        }  else {
+            ibHeart.setBackgroundResource(R.drawable.ufi_heart);
+        }
+
+        tvLikes.setText(post.getLikesCount());
 
        //  Post post = Parcels.unwrap(getIntent().getParcelableExtra(Post.class.getSimpleName()));
 

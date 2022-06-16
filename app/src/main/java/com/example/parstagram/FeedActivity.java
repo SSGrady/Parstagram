@@ -82,6 +82,7 @@ public class FeedActivity extends AppCompatActivity {
         ParseQuery<Post> query = ParseQuery.getQuery(Post.class);
         // include data referred by user key
         query.include(Post.KEY_USER);
+        query.include(Post.KEY_LIKED_BY);
         // limit query to latest 20 items
         query.setLimit(20);
         // order posts by creation date (newest first)
