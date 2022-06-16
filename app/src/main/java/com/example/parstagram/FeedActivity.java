@@ -1,5 +1,6 @@
 package com.example.parstagram;
 
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -7,15 +8,18 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.parse.FindCallback;
 import com.parse.ParseException;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,7 +49,7 @@ public class FeedActivity extends AppCompatActivity {
         // set the layout manager on the recycler view
         rvItems.setLayoutManager(new LinearLayoutManager(this));
         // query posts from Parstagram
-        queryPosts();
+        // remove *** queryPosts(); ** and instead use onResume
 
         // Lookup the swipe container view
         swipeContainer = (SwipeRefreshLayout) findViewById(R.id.swipeContainer);
@@ -64,7 +68,6 @@ public class FeedActivity extends AppCompatActivity {
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
                 android.R.color.holo_red_light);
-
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -74,6 +77,13 @@ public class FeedActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
         // Now we call setRefreshing(false) to signal refresh has finished
         swipeContainer.setRefreshing(false);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        adapter.clear();
+        queryPosts();
     }
 
 

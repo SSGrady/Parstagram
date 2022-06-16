@@ -85,5 +85,6 @@ public class Post extends ParseObject {
         List<ParseUser> likedBy = getLikedBy();
         likedBy.add(ParseUser.getCurrentUser());
         setLikedBy(likedBy);
+        saveInBackground();
     }
 }

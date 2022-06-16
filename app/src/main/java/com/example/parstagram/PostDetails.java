@@ -40,6 +40,7 @@ public class PostDetails extends AppCompatActivity {
         refreshComments();
     }
 
+
     void refreshComments() {
         // load all comments for this post
         ParseQuery <Comment> query =  ParseQuery.getQuery("Comment");
