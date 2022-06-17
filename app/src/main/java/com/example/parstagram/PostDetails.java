@@ -73,6 +73,7 @@ public class PostDetails extends AppCompatActivity {
         TextView tvUsername = findViewById(R.id.tvUsername);
         TextView tvDate = findViewById(R.id.tvDate);
         ImageView ivPhoto = findViewById(R.id.ivPhoto);
+        ImageView ivProfilePhoto = findViewById(R.id.ivProfilePhoto);
         ImageButton ibHeart = findViewById(R.id.ibHeart);
         ImageButton ibComment = findViewById(R.id.ibComment);
         TextView tvLikes = findViewById(R.id.tvLikes);

@@ -15,7 +15,8 @@
         <ImageView
             android:id="@+id/ivProfilePhoto"
             android:layout_width="35dp"
-            android:layout_height="35dp" />
+            android:layout_height="35dp"
+            />
 
         <TextView
             android:id="@+id/tvUsername"
@@ -28,7 +29,8 @@
     <TextView
         android:id="@+id/tvDate"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"/>
 
     <ImageView
         android:id="@+id/ivPhoto"
