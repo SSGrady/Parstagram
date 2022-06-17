@@ -32,9 +32,6 @@
             android:name=".PostDetails"
             android:exported="false" />
         <activity
-            android:name=".FeedActivity"
-            android:exported="false" />
-        <activity
             android:name=".MainActivity"
             android:exported="false" />
         <activity
