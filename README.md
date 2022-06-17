@@ -2,7 +2,7 @@
 
 **Parstagram** is a photo sharing app using Parse as its backend.
 
-Time spent: **18** hours spent in total
+Time spent: **19** hours spent in total
 
 ## User Stories
 
@@ -31,7 +31,7 @@ The following **stretch** features are implemented:
 - User Profiles:
     - [x] Allow the logged in user to add a profile photo
     - [ ] Display the profile photo with each post
-    - [ ] Tapping on a post's username or profile photo goes to that user's profile page
+    - [x] Tapping on a post's username or profile photo goes to that user's profile page
     - [ ] User Profile shows posts in a grid
 - [ ] After the user submits a new post, show an indeterminate progress bar while the post is being uploaded to Parse
 - [x] User can comment on a post and see all comments for each post in the post details screen.
@@ -39,8 +39,8 @@ The following **stretch** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] I've made two custom gradients
-- [ ] TODO
+- [x] Created two custom gradients
+- [x] Changed default app icon to match custom design
 
 Please list two areas of the assignment you'd like to **discuss further with your peers** during the next class (examples include better ways to implement something, how to extend your app in certain ways, etc):
 

@@ -75,13 +75,11 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.action_compose:
                         fragment = composeFragment;
-                        /// Toast.makeText(MainActivity.this, "made it to Compose", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_profile:
                         profileFragment.user = (User) ParseUser.getCurrentUser();
                         fragment = profileFragment;
                     default:
-                        // Toast.makeText(MainActivity.this, "made it to Profile", Toast.LENGTH_SHORT).show();
                         break;
                 }
                 fragmentManager.beginTransaction().replace(R.id.flContainer, fragment).commit();
