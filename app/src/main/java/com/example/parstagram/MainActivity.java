@@ -40,6 +40,19 @@ public class MainActivity extends AppCompatActivity {
     final FragmentManager fragmentManager = getSupportFragmentManager();
     BottomNavigationView bottomNavigationView;
 
+    HomeFragment homeFragment = new HomeFragment();
+    ComposeFragment composeFragment = new ComposeFragment();
+    ProfileFragment profileFragment = new ProfileFragment();
+
+
+
+    public void goToProfileTab(User user) {
+        // this tells the tab bar to select the profile tab
+        profileFragment.user = user;
+        // profileFragment.displayUserInfo();
+        bottomNavigationView.setSelectedItemId(R.id.action_profile);
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +60,6 @@ public class MainActivity extends AppCompatActivity {
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         // define your fragments here
-        final Fragment fragmentHome = new HomeFragment();
-        final Fragment fragmentCompose = new ComposeFragment(MainActivity.this);
-        final Fragment fragmentProfile = new ProfileFragment();
 
 
         // handle navigation selection
@@ -57,19 +67,20 @@ public class MainActivity extends AppCompatActivity {
             @SuppressLint("NonConstantResourceId")
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                Fragment fragment;
+                Fragment fragment = null;
                 switch (item.getItemId()) {
                     case R.id.action_home:
-                        fragment = fragmentHome;
+                        fragment = homeFragment;
                         // Toast.makeText(MainActivity.this, "made it to Home", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_compose:
-                        fragment = fragmentCompose;
+                        fragment = composeFragment;
                         /// Toast.makeText(MainActivity.this, "made it to Compose", Toast.LENGTH_SHORT).show();
                         break;
                     case R.id.action_profile:
+                        profileFragment.user = (User) ParseUser.getCurrentUser();
+                        fragment = profileFragment;
                     default:
-                        fragment = fragmentProfile;
                         // Toast.makeText(MainActivity.this, "made it to Profile", Toast.LENGTH_SHORT).show();
                         break;
                 }

@@ -33,7 +33,7 @@ public class ProfileFragment extends BaseFragment {
     public TextView tvUsername;
     public ImageView ivProfilePhoto;
 
-    User user = (User) User.getCurrentUser();
+    public User user = (User) User.getCurrentUser();
 
     // The onCreateView method is called when Fragment should create its View object hierarchy,
     // either dynamically or via XML layout inflation.
@@ -71,7 +71,7 @@ public class ProfileFragment extends BaseFragment {
     }
 
     @SuppressLint("SetTextI18n")
-    void displayUserInfo() {
+    public void displayUserInfo() {
         tvUsername.setText(user.getUsername());
         ParseFile profilePhoto = user.getProfilePhoto();
         if (profilePhoto != null) {

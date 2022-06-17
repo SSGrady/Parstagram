@@ -1,5 +1,6 @@
 package com.example.parstagram;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
@@ -50,6 +51,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         holder.bind(post);
     }
 
+    @SuppressLint("NotifyDataSetChanged")
     public void clear() {
         posts.clear();
         notifyDataSetChanged();
@@ -61,12 +63,16 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
         private ImageView ivImage;
         private TextView tvDescription;
         public ImageButton ibHeart;
+        public ImageView ivProfileImage;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvUsername = itemView.findViewById(R.id.tvUsername);
             ivImage = itemView.findViewById(R.id.ivPhoto);
             tvDescription = itemView.findViewById(R.id.tvDescription);
+            ivProfileImage = itemView.findViewById(R.id.ivProfilePhoto);
+
+
             // itemView's onClick listener.
             itemView.setOnClickListener(this);
         }
@@ -78,6 +84,7 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
             tvDescription.setText(post.getDescription());
             tvUsername.setText(post.getUser().getUsername());
             ibHeart = itemView.findViewById(R.id.ibHeart);
+            Glide.with(context).load(post.getUser().getProfilePhoto().getUrl()).circleCrop().into(ivProfileImage);
             ParseFile image = post.getImage();
             if (image != null) {
                 Glide.with(context).load(image.getUrl()).into(ivImage);
@@ -99,6 +106,13 @@ public class PostsAdapter extends RecyclerView.Adapter<PostsAdapter.ViewHolder> 
                 }
             });
 
+            ivProfileImage.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    MainActivity activity = (MainActivity)context;
+                    activity.goToProfileTab(post.getUser());
+                }
+            });
             if (post.isLikedByCurrentUser()) {
                 ibHeart.setBackgroundResource(R.drawable.ufi_heart_active);
             }  else {
